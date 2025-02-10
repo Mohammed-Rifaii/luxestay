@@ -20,7 +20,7 @@
 :root {
   --nav-color: #444444;  /* The default color of hamburger icon */
   --nav-hover-color: #125629; /* color of the active navbar active element- unused in our case but ensures there no mistakes*/
-  --nav-mobile-background-color: #0fe75b; /* background color for nav dropdown*/
+  --nav-mobile-background-color: #ffffff; /* background color for nav dropdown*/
   --nav-dropdown-background-color: #ffffff; /* Ensures that the element hovered over in the dropdown is the same color as the dropdown color */
   --nav-dropdown-color: #0d0633; /* used for inactive elements in the dropdown */
   --nav-dropdown-hover-color: #2eca6a; /* applied to dropdown navigation links when they are hovered over. */
@@ -1150,11 +1150,17 @@ section,
   color: var(--default-color);
   border: none;
   position: relative;
-  border-radius: 0px;
+  border-radius: 20px;
   overflow: hidden;
   min-height: 500px;
 }
-
+.real-estate {
+  display: flex;
+  justify-content: center; /* Horizontally center the items */
+  align-items: center; /* Vertically center the items */
+  flex-direction: column; /* Stack items vertically (if needed) */
+  min-height: 100vh; /* Ensures the section takes at least the full height of the viewport */
+}
 .real-estate .card:before {
   content: "";
   position: absolute;

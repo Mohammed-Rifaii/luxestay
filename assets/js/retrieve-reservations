@@ -1,8 +1,49 @@
 function generateCalendar(year, month, cal) {
-    
+
+
     cal.innerHTML = ""; // Clear previous calendar
     const firstDay = new Date(year, month, 1);  // First day of the current month
     const lastDay = new Date(year, month + 1, 0); // Last day of the current month
+
+
+    let strMonth;
+    switch(month){
+        case 1: strMonth="January";
+                break;
+        case 2: strMonth="February";
+                break;
+        case 3: strMonth="March";
+                break;
+        case 4: strMonth="April";
+                break;
+        case 5: strMonth="May";
+                break;
+        case 6: strMonth="June";
+                break;
+        case 7: strMonth="July";
+                break;
+        case 8: strMonth="August";
+                break;
+        case 9: strMonth="September";
+                break;
+        case 10: strMonth="October";
+                break;
+        case 11: strMonth="November";
+                break;
+        case 12: strMonth="December";
+                break;
+        default: strMonth="Invalid Month";
+
+        
+    }
+    let monthElement=`<div>${strMonth}</div>`;
+    let m = document.createElement("div");
+    m.classList.add("monthdiv");
+    m.innerHTML=monthElement;
+     m.style.marginBottom = "20px";
+    cal.appendChild(m);
+
+
     // Loop through each day of the month
     for (let day = 1; day <= lastDay.getDate(); day++) {
         const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
@@ -33,15 +74,20 @@ function generateCalendar(year, month, cal) {
         } else {
             dayElement.addEventListener("click", () => selectDate(dateStr, dayElement));
         }
-        
+        console.log(bookedDates);
 
 })     .catch(error => console.error('Error fetching reservation dates:', error));;
 
       
 
         // Append the day element to the calendar
+      
+        
+        
+        
         cal.appendChild(dayElement);
     }
+    
 }
 
 

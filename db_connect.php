@@ -8,7 +8,7 @@
     try{$conn=mysqli_connect($db_server,$user,$pass,$db_name);
         ;}
     catch(mysqli_sql_exception){
-        echo "Error Establishing a DataBase Connection";
+        echo " Establishing a DataBase Connection";
         
     }
 

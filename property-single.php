@@ -52,29 +52,37 @@
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
         
-        
-
-        /* Calendar Grid */
-        #calendar {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 5px;
-            padding: 10px;
-        }
 
         /* Flexbox Layout for Portfolio and Calendar */
 
 
-        #calendarNext {
+        #calendar1, #calendar2,#calendar3, #calendar4, #calendar5,#calendar6 {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             gap: 5px;
             padding: 10px;
         }
 
-        /* Day Style */
+        
+        .monthdiv{
+          display:flex;
+          padding: 15px;
+          height:100%;
+          justify-content: center;
+          align-items: center; 
+          text-align:center;
+            border-radius: 8px;
+            background:rgb(61, 184, 133);
+            font-weight: bold;
+            transition: all 0.2s;
+            text-align: center;
+            
+
+            
+
+        }/* Day Style */
         .day {
-            padding: 15px;
+            padding: 15px;  
             border-radius: 8px;
             background: #e8f5e9;
             font-weight: bold;
@@ -111,9 +119,15 @@
             color: #388e3c;
         }
 
+        #hero-carousel {
+  position: relative;
+}
+
+
+
         /* Buttons */
         button {
-            background: #388e3c;
+            background: #2eca6a;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -127,6 +141,29 @@
         button:hover {
             background: #2e7d32;
         }
+.carousel-item {
+  visibility: hidden; /* Hide inactive slides */
+  opacity: 0;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  position: absolute; /* Ensure slides don't stack on top of each other */
+  top: 0;
+  left: 0;
+  width: 100%;
+  
+}
+
+.carousel-item.active {
+  visibility: visible; /* Show active slide */
+  opacity: 1;
+  position: relative; /* Bring active slide to the front */
+}
+
+.cycle{
+  border-radius:17px;
+  background-color: #2eca6a;
+}
+        
+
     </style>
   <!-- Favicons -->
   <link href="assets/img/L-logo.png" rel="icon">
@@ -139,6 +176,7 @@
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -240,9 +278,30 @@
  <h2><b>Reservation Calendar:</b></h2>
  
     <div id="calendar-container">
+        <section id="calendar-section" class="calendar section">
+        <div id="hero-carousel" class="carousel slide">
+          <div class="carousel-inner">
+                <div id="calendar1" class="carousel-item  active" ></div>
+                <div id="calendar2" class="carousel-item"></div>
+                <div id="calendar3" class="carousel-item"></div>
+                <div id="calendar4" class="carousel-item"></div>
+                <div id="calendar5" class="carousel-item"></div>
+                <div id="calendar6" class="carousel-item"></div>
+          </div>
+          <div class="d-flex justify-content-center">
+          <div class=" d-flex justify-content-between" style="width:300px;">
+          <button class="cycle" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
+  <span class="bi bi-chevron-left"></span>
+</button>
+          <button class="cycle" type="button" data-bs-target="#hero-carousel" data-bs-slide="next">
+  <span class="bi bi-chevron-right"></span>
+</button>
+          </div>
+          </div>
+        </div>
         
-        <div id="calendar"></div>
-        <div id="calendarNext"></div>
+        </section>
+
         <p id="checkin">Select your reservation dates.</p>
         <p id="checkout"></p>
         <p id="totalNights"></p>
@@ -285,8 +344,12 @@
     
     <script>
       
-   const calendar = document.getElementById("calendar");
-const calendarNext = document.getElementById("calendarNext");
+   const calendar = document.getElementById("calendar1");
+const calendar2 = document.getElementById("calendar2");
+const calendar3= document.getElementById("calendar3");
+const calendar4 = document.getElementById("calendar4");
+const calendar5 = document.getElementById("calendar5");
+const calendar6= document.getElementById("calendar6");
 const reservationDetails = document.getElementById("checkin");
 const checkout = document.getElementById("checkout");
 const totalNights = document.getElementById("totalNights");
@@ -299,40 +362,19 @@ let bookedDates=[];
 // Example of booked dates (Disable them)
 
 const today = new Date();
-generateCalendar(today.getFullYear(), today.getMonth(), calendar); // Current month
-generateCalendar(today.getFullYear(), today.getMonth() + 1, calendarNext); // Next month
+generateCalendar(today.getFullYear(), today.getMonth()+1, calendar);
+generateCalendar(today.getFullYear(), today.getMonth() + 2, calendar2); 
+generateCalendar(today.getFullYear(), today.getMonth() + 3, calendar3);
+generateCalendar(today.getFullYear(), today.getMonth() + 4, calendar4); 
+generateCalendar(today.getFullYear(), today.getMonth() + 5, calendar5); 
+generateCalendar(today.getFullYear(), today.getMonth() + 6, calendar6); 
+
+                        
 </script>
              
           
 
-           
-            <!-- Tab Content -->
-            <div class="tab-content">
-
-              <div class="tab-pane fade show active" id="real-estate-2-tab1">
-
-              </div><!-- End Tab 1 Content -->
-
-              <div class="tab-pane fade" id="real-estate-2-tab2">
-                <img src="assets/img/floor-plan.jpg" alt="" class="img-fluid">
-              </div><!-- End Tab 2 Content -->
-
-              <div class="tab-pane fade" id="real-estate-2-tab3">
-                <iframe style="border:0; width: 100%; height: 400px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus" frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-              </div><!-- End Tab 3 Content -->
-
-            </div><!-- End Tab Content -->
-
-          </div>
-
-        
-
-        </div>
-
-      </div>
-
-    </section><!-- /Real Estate 2 Section -->
-
+       
   </main>
   <?php
   include("footer.html");

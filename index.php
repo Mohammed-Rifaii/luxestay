@@ -91,7 +91,7 @@ $user_id = $_SESSION['user_id'];
               <p id="prop3_name"></p>
    
               <h2 id="prop3_location"></h2>
-              <a href="property-single.php?guest_house_id=6" class="btn-get-started" style="height: 50px;"><p id="prop3_cost"></p></a>
+              <a href="property-single.php?guest_house_id=4" class="btn-get-started" style="height: 50px;"><p id="prop3_cost"></p></a>
             </div>
           </div>
         </div><!-- End Carousel Item -->

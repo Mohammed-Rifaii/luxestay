@@ -36,7 +36,58 @@ $user_id = $_SESSION['user_id'];
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<style>
+  .carousel {
+    height: 100%; /* Ensure full height */
+    width: 80%;
+    overflow: hidden; /* Hide any overflowing content */
+}
+#real-estate {
+    position: relative; /* Ensure the section is the reference for absolute positioning */
+}
 
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* Center vertically */
+    z-index: 5; /* Ensure arrows are above other elements */
+    background-color: rgba(0, 0, 0, 0.2); /* Optional: adds a slight background color to the arrows */
+    border-radius: 50%; /* Make the buttons circular */
+    width: 40px; /* Adjust size as needed */
+    height: 40px; /* Adjust size as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-control-prev {
+    left: -50px; /* Position the 'previous' button outside the carousel */
+}
+
+.carousel-control-next {
+    right: -50px; /* Position the 'next' button outside the carousel */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #2eca6a; /* Ensure the arrows are visible */
+    width: 20px; /* Adjust size as needed */
+    height: 20px; /* Adjust size as needed */
+}
+
+.cycle {
+    border: 0;
+    background-color: #2eca6a;
+    height: 70px;
+    width: 70px;
+    margin: 100px;
+    margin-bottom: 0;
+    border-radius: 10px;
+
+}
+
+</style>
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
@@ -46,8 +97,6 @@ $user_id = $_SESSION['user_id'];
 
 <?php
   include("header.html");
-  include("db_connect.php");
-
   ?>
   <main class="main">
 
@@ -79,166 +128,17 @@ $user_id = $_SESSION['user_id'];
     </div><!-- End Page Title -->
 
     <!-- Real Estate Section -->
-     <form METHOD="POST">
+    <!-- Real Estate Section with Carousel -->
+<!-- Real Estate Section with Carousel -->
+
+<form METHOD="POST">
     <section id="real-estate" class="real-estate section">
-
-      <div class="container">
-      
-        <div class="row gy-4">
-
-          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="card">
-              <img id="img1" alt="" class="img-fluid">
-              
-              <div class="card-body">
-                <span class="sale-rent" id="prop1_cost"></span>
-                <h3><a href="property-single.php?guest_house_id=1" class="stretched-link" id="prop1_name"></a></h3>
-                <div class="card-content d-flex flex-column justify-content-center text-center">
-                  <div class="row propery-info">
-                    <div class="col">Area</div>
-                    <div class="col">Beds</div>
-                    <div class="col">Baths</div>
-                    <div class="col">Garages</div>
-                  </div>
-                  <div class="row">
-                    <div class="col" id="prop1_area"></div>
-                    <div class="col" id= "prop1_beds"></div>
-                    <div class="col" id="prop1_baths"></div>
-                    <div class="col" id="prop1_garages"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Property Item -->
-
-        
-          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="card">
-              <img id="img2" alt="" class="img-fluid">
-              <div class="card-body">
-                <span class="sale-rent" id="prop2_cost"></span>
-                <h3><a href="property-single.php?guest_house_id=8" class="stretched-link" id="prop2_name"></a></h3>
-                <div class="card-content d-flex flex-column justify-content-center text-center">
-                  <div class="row propery-info">
-                    <div class="col">Area</div>
-                    <div class="col">Beds</div>
-                    <div class="col">Baths</div>
-                    <div class="col">Garages</div>
-                  </div>
-                  <div class="row">
-                    <div class="col" id="prop2_area"></div>
-                    <div class="col" id="prop2_beds"></div>
-                    <div class="col" id="prop2_baths"></div>
-                    <div class="col" id="prop2_garages"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Property Item -->
-
-
-          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="card">
-              <img id="img3" alt="" class="img-fluid">
-              <div class="card-body">
-                <span class="sale-rent" id="prop3_cost"></span>
-                <h3><a href="property-single.php?guest_house_id=6" class="stretched-link" id="prop3_name"></a></h3>
-                <div class="card-content d-flex flex-column justify-content-center text-center">
-                  <div class="row propery-info">
-                    <div class="col">Area</div>
-                    <div class="col">Beds</div>
-                    <div class="col">Baths</div>
-                    <div class="col">Garages</div>
-                  </div>
-                  <div class="row">
-                    <div class="col"><p id="prop3_area"></p></div>
-                    <div class="col"><p id="prop3_beds"></p></div>
-                    <div class="col"><p id="prop3_baths"></p></div>
-                    <div class="col"><p id="prop3_garages"></p></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Property Item -->
-
-          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="card">
-              <img id="img4" alt="" class="img-fluid">
-              
-              <div class="card-body">
-                <span class="sale-rent" id="prop4_cost"></span>
-                <h3><a href="property-single.php?guest_house_id=4" class="stretched-link" id="prop4_name"></a></h3>
-                <div class="card-content d-flex flex-column justify-content-center text-center">
-                  <div class="row propery-info">
-                    <div class="col">Area</div>
-                    <div class="col">Beds</div>
-                    <div class="col">Baths</div>
-                    <div class="col">Garages</div>
-                  </div>
-                  <div class="row">
-                    <div class="col" id="prop4_area"></div>
-                    <div class="col" id= "prop4_beds"></div>
-                    <div class="col" id="prop4_baths"></div>
-                    <div class="col" id="prop4_garages"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Property Item -->
-
-        
-          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="card">
-              <img id="img5" alt="" class="img-fluid">
-              <div class="card-body">
-                <span class="sale-rent" id="prop5_cost"></span>
-                <h3><a href="property-single.php?guest_house_id=2" class="stretched-link" id="prop5_name"></a></h3>
-                <div class="card-content d-flex flex-column justify-content-center text-center">
-                  <div class="row propery-info">
-                    <div class="col">Area</div>
-                    <div class="col">Beds</div>
-                    <div class="col">Baths</div>
-                    <div class="col">Garages</div>
-                  </div>
-                  <div class="row">
-                    <div class="col" id="prop5_area"></div>
-                    <div class="col" id="prop5_beds"></div>
-                    <div class="col" id="prop5_baths"></div>
-                    <div class="col" id="prop5_garages"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Property Item -->
-
-
-          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="card">
-              <img id="img6" alt="" class="img-fluid">
-              <div class="card-body">
-                <span class="sale-rent" id="prop6_cost"></span>
-                <h3><a href="property-single.php?guest_house_id=5" class="stretched-link" id="prop6_name"></a></h3>
-                <div class="card-content d-flex flex-column justify-content-center text-center">
-                  <div class="row propery-info">
-                    <div class="col">Area</div>
-                    <div class="col">Beds</div>
-                    <div class="col">Baths</div>
-                    <div class="col">Garages</div>
-                  </div>
-                  <div class="row">
-                    <div class="col"><p id="prop6_area"></p></div>
-                    <div class="col"><p id="prop6_beds"></p></div>
-                    <div class="col"><p id="prop6_baths"></p></div>
-                    <div class="col"><p id="prop6_garages"></p></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Property Item -->
-</div>
-</form>
+        <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner"></div>
+            <!-- Chevron Buttons -->
+        </div>
     </section><!-- /Real Estate Section -->
-
+</form>
   </main>
 
   <?php
@@ -260,8 +160,7 @@ $user_id = $_SESSION['user_id'];
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
-  <Script src="assets/js/retrieve-data-properties.js"></script>
-
+  <script src="assets/js/retrieve-data-properties.js"></script>
 </body>
 
 </html>

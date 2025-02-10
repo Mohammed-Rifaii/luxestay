@@ -102,6 +102,16 @@
             }
     }
 }
+
+    else if($ui='/luxestay/get-data.php/get_guest_house_count'){
+        $query="SELECT COUNT(*) FROM guest_houses";
+        $result=mysqli_query($conn,$query);
+        if($result && mysqli_num_rows($result)>0){
+            while($rows=mysqli_fetch_assoc($result)){
+                $data[]=$rows;
+            }
+        }
+    }
     
     
     
