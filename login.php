@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
 
     // Checking if the user exists in the table users
-    $check = "SELECT user_id FROM users WHERE user_email = '$email'";
+    $check = "SELECT user_id,urole FROM users WHERE user_email = '$email'";
     $userExist = mysqli_query($conn, $check);
 
       // Checking if the admin exists in the table users
@@ -75,14 +75,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $getPassword = "SELECT user_password FROM users WHERE user_email = '$email'";
         $result = mysqli_query($conn, $getPassword);
         $row = mysqli_fetch_assoc($result);
-        
+        $role="admin";
         if ($password == $row['user_password']) {
             // Password is correct
             $row = mysqli_fetch_assoc($userExist);
            
             session_start();
             $_SESSION['user_id'] = $row['user_id'];// Store user ID in session
-            header("Location: index.php"); // Redirect to dashboard
+            if($row['urole']==$role)
+            header("Location:dashboard.php"); // Redirect to dashboard
+            else header("Location:index.php");
             exit();
         } else {
             echo "error";
@@ -91,25 +93,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "error";
     }
 
- if (mysqli_num_rows($adminExist) != 0) {
-        $getPassword = "SELECT admin_pass FROM admins WHERE admin_email = '$email'";
-        $result = mysqli_query($conn, $getPassword);
-        $row = mysqli_fetch_assoc($result);
-        
-        if ($password == $row['admin_pass']) {
-            // Password is correct
-            $row = mysqli_fetch_assoc($adminExist);
-           
-            session_start();
-            $_SESSION['admin_id'] = $row['admin_id'];// Store user ID in session
-            header("Location: index1.php"); // Redirect to dashboard
-            exit();
-        } else {
-            echo "error";
-        }
-    } else {
-        echo "error";
-    }
     mysqli_close($conn);
 }
 ?>

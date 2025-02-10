@@ -46,7 +46,7 @@ function generateCalendar(year, month, cal) {
 
     // Loop through each day of the month
     for (let day = 1; day <= lastDay.getDate(); day++) {
-        const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+        const dateStr = `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
         const dayElement = document.createElement("div");
         dayElement.classList.add("day");
         dayElement.textContent = day;
