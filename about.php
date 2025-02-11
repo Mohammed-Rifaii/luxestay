@@ -122,7 +122,7 @@
             <div class="stats-item d-flex align-items-center w-100 h-100">
               <i class="bi bi-emoji-smile color-blue flex-shrink-0"></i>
               <div>
-                <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+                <span id="usercount" data-purecounter-start="0" data-purecounter-end="" data-purecounter-duration="1" class="purecounter"></span>
                 <!-- the precounter is a library of javascript called PureCounter-->
                 <p>Happy Clients</p>
               </div>
@@ -133,7 +133,7 @@
             <div class="stats-item d-flex align-items-center w-100 h-100">
               <i class="bi bi-journal-richtext color-orange flex-shrink-0"></i>
               <div>
-                <span data-purecounter-start="0" data-purecounter-end="9" data-purecounter-duration="1" class="purecounter"></span>
+                <span id="housecounter" data-purecounter-start="0" data-purecounter-end="" data-purecounter-duration="1" class="purecounter"></span>
                 
                 <p>Properties</p>
               </div>
@@ -173,7 +173,7 @@
 
         <div class="row justify-content-around gy-4">
           <div class="features-image col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <img src="assets/img/WEBSITE LOGO.png" alt=""></div>
+            <img src="  " alt=""></div>
 
           <div class="col-lg-5 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
             <h3>Experience Comfort and Convenience: </h3>
@@ -241,9 +241,10 @@
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/about-stats.js"></script>
+
 
 </body>
 

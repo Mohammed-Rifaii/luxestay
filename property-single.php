@@ -23,7 +23,7 @@
   <meta name="description" content="">
   <meta name="keywords" content="">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="assets/js/retrieve-reservations"></script>
+  <script src="assets/js/retrieve-reservations.js"></script>
 
  
 

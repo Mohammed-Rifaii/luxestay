@@ -68,8 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userExist = mysqli_query($conn, $check);
 
       // Checking if the admin exists in the table users
-    $check2= "SELECT admin_id FROM admins WHERE admin_email = '$email'";
-    $adminExist=mysqli_query($conn,$check2);
     // If user exists
     if (mysqli_num_rows($userExist) != 0) {
         $getPassword = "SELECT user_password FROM users WHERE user_email = '$email'";
@@ -79,11 +77,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($password == $row['user_password']) {
             // Password is correct
             $row = mysqli_fetch_assoc($userExist);
-           
             session_start();
             $_SESSION['user_id'] = $row['user_id'];// Store user ID in session
+            $_SESSION['urole']=$row['urole'];
             if($row['urole']==$role)
             header("Location:dashboard.php"); // Redirect to dashboard
+           
+        
             else header("Location:index.php");
             exit();
         } else {

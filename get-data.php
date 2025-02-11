@@ -6,6 +6,9 @@
     $email=$_SESSION['email'];//get email through session
     $house_id =$_SESSION['guest_house_id'];
     $data=[];
+    $data1=[];
+    $data2=[];
+    $role="admin";
     if($request_method=='GET'){
         if($uri=='/luxestay/get-data.php/users'){
         
@@ -17,7 +20,16 @@
                     $data[]=$row;//while there are rows add them to the array
             }
         }
+
+        else if ($uri=="/luxestay/get-data.php/stats"){
+            $query="SELECT COUNT(*) FROM users";
+            $result=mysqli_query($conn,$query);
+            if($result && mysqli_num_rows($result)>0){
+                while($rows=mysqli_fetch_assoc($result))
+                    $data[]=$rows;
+            }
     
+        }
         else if ($uri=="/luxestay/get-data.php/get_guest_house"){
             $query="SELECT guest_house_id,guest_house_name, area,beds,baths,garages,cost, guest_house_des, guest_house_about,
              location_id FROM guest_houses WHERE guest_house_id=$house_id";
@@ -113,7 +125,7 @@
         }
     }
     
-    
+
     
     mysqli_close($conn);
     echo json_encode($data);//encode data as jason file to send them out

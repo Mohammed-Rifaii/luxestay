@@ -62,8 +62,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $userExist = mysqli_query($conn, $check);
         if (mysqli_num_rows($userExist) == 0) {
             // Insert new user if not found
-            $query = "INSERT INTO users(user_name, user_lastName, user_email, user_phone, user_password) 
-                      VALUES('$name', '$lastName', '$email', '$phone', '$password')";
+            $query = "INSERT INTO users(user_name, user_lastName, user_email, user_phone, user_password, urole) 
+                      VALUES('$name', '$lastName', '$email', '$phone', '$password','user')";
             $result = mysqli_query($conn, $query);
             if ($result) {
                 echo "<p class='text-center mb-20' style='font-size: large;'>Data Inserted</p>";
