@@ -1,5 +1,7 @@
 <?php
 session_start();
+if($_SESSION['urole']!="admin")
+  header("Location:index.php");
 
 ?>
 
@@ -50,16 +52,11 @@ session_start();
   <div class="container-fluid">
     <div class="row">
       <!-- Sidebar -->
-      <div class="col-md-2 sidebar">
-        <h2>Dashboard</h2>
-        <ul class="nav flex-column">
-          <li><a href="index.php"><h6>Home</h6></a></li>
-          <li><a href="login.php"><h6>Logout</h6></a></li>
-        </ul>
-      </div>
-
+       <?php
+      include("dashboard-header.html");
+      ?>
       <!-- Main Content -->
-      <div class="col-md-10">
+      <div class="col-md-10" style="margin-left:350px;">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="container-fluid">
             <h1 style="color: #2eca6a;">Admin Panel</h1></a>
@@ -130,7 +127,7 @@ session_start();
                      </thead>
                      <tbody>
                        <?php
-                       $query = "SELECT user_id, user_name, user_lastName, user_email, user_phone FROM users ORDER BY user_id DESC";
+                       $query = "SELECT user_id, user_name, user_lastName, user_email, user_phone,urole FROM users WHERE urole!='admin' ORDER BY user_id DESC";
                        $result = mysqli_query($conn, $query);
                        while ($row = mysqli_fetch_assoc($result)) {
                          echo "<tr>";
@@ -174,6 +171,9 @@ session_start();
                        <?php
                        $query = "SELECT reservation_id, reservation_date, house_id, user_id FROM reservations ORDER BY reservation_date DESC";
                        $result = mysqli_query($conn, $query);
+echo "<tr>";
+echo '<a href="delete_all_reservations.php" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure?\')">Cancel All</a>';
+
                        while ($row2 = mysqli_fetch_assoc($result)) {
                          echo "<tr>";
                          echo "<td>" . htmlspecialchars($row2['reservation_id']) . "</td>";

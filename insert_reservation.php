@@ -6,7 +6,8 @@ require 'db_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-  $days=explode(',',$_POST['selected_dates']);// we transform the string into an array
+  $days=explode(',',$_POST['selected_dates']);
+  echo "asd";// we transform the string into an array
   foreach($days as $day){
         $sql="INSERT INTO reservations(reservation_date,house_id,user_id) VALUES('$day','$house_id','$user_id')";
   

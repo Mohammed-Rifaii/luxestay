@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 09, 2025 at 12:08 PM
+-- Generation Time: Feb 11, 2025 at 02:41 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,29 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `project_guesthouse`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admins`
---
-
-CREATE TABLE `admins` (
-  `admin_id` int(11) NOT NULL,
-  `admin_name` varchar(15) NOT NULL,
-  `admin_lname` varchar(20) NOT NULL,
-  `admin_email` varchar(100) NOT NULL,
-  `admin_pass` varchar(20) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `admins`
---
-
-INSERT INTO `admins` (`admin_id`, `admin_name`, `admin_lname`, `admin_email`, `admin_pass`) VALUES
-(1, 'elio', 'abdo', 'elioabdo@hotmail.com', '123456'),
-(2, 'Elia', 'Abdel Massih', 'eliaabdelmassih@hotmail.com', '54321'),
-(3, 'amjad', 'rifaii', 'amjadrifaii@hotmail.com', '56789');
 
 -- --------------------------------------------------------
 
@@ -78,7 +55,8 @@ INSERT INTO `guest_houses` (`guest_house_id`, `guest_house_name`, `area`, `beds`
 (6, 'Pine Ridge', 100, 4, 2, 2, 140, 'A rustic and cozy guesthouse nestled in a pine forest, offering a secluded and peaceful retreat.', 'A rustic and cozy guesthouse nestled in a pine forest, offering a secluded and peaceful retreat, in the picturesque town of Zahl&eacute;, where the scent of pine trees mingles with the fresh mountain breeze. Surrounded by lush greenery and the soothing sounds of nature, this charming hideaway is the perfect escape from the hustle and bustle of everyday life. Spend your days exploring nearby vineyards, strolling along the serene Berdawni River, or simply relaxing on the wooden porch with a cup of locally brewed coffee. As the sun sets, gather around a crackling fire pit under a canopy of stars, and let the tranquility of this forested haven rejuvenate your soul. Whether you\'re seeking adventure or relaxation, this guesthouse in Zahl&eacute; promises an unforgettable retreat.', 4, 11, 5),
 (7, 'Sunrise', 130, 5, 2, 2, 150, 'A guesthouse that boasts beautiful sunrise views, perfect for early risers and nature lovers.', '', 5, 8, 7),
 (8, 'Sunset Villa', 200, 5, 4, 4, 300, 'A guesthouse with stunning sunset views, ideal for those looking to enjoy the luxurious life.', 'A guesthouse in the heart of Batroun, with stunning sunset views, ideal for those looking to enjoy the luxurious life, where every evening paints the sky in vibrant hues of gold, pink, and orange, creating a mesmerizing backdrop for your stay. Designed with elegance and sophistication, this retreat offers spacious, beautifully appointed rooms, private balconies, and infinity pools that seem to blend seamlessly with the horizon. Indulge in gourmet dining experiences, unwind with bespoke spa treatments, and savor the finest wines as you watch the sun dip below the horizon. Whether you\'re celebrating a special occasion or simply seeking a lavish escape, this guesthouse promises an unparalleled experience of opulence and tranquility, where every moment feels like a dream', 7, 6, 3),
-(9, 'Tranquil Hideaway', 60, 2, 1, 1, 90, 'A hidden gem of a guesthouse, offering a tranquil and secluded escape from the hustle and bustle of daily life.', '', 3, 13, 13);
+(9, 'Tranquil Hideaway', 60, 2, 1, 1, 90, 'A hidden gem of a guesthouse, offering a tranquil and secluded escape from the hustle and bustle of daily life.', '', 3, 13, 13),
+(27, 'Rusty Lake', 70, 2, 1, 1, 45, 'The Rusty Lake', 'Cube Escape Reference', 3, 8, 2);
 
 -- --------------------------------------------------------
 
@@ -180,7 +158,10 @@ INSERT INTO `images` (`image_id`, `image_path`, `guest_house_id`) VALUES
 (51, 'assets/img/property-slide/sunsetVilla3.jpg', 8),
 (52, 'assets/img/property-slide/tranquil.jpg', 9),
 (53, 'assets/img/property-slide/tranquil2.jpg', 9),
-(54, 'assets/img/property-slide/tranquil3.jpg', 9);
+(54, 'assets/img/property-slide/tranquil3.jpg', 9),
+(56, 'assets/img/property-slide/rustyLake1.jpg', 27),
+(57, 'assets/img/property-slide/rustyLake3.jpeg', 27),
+(59, 'assets/img/property-slide/rustyLake2.jpg', 27);
 
 -- --------------------------------------------------------
 
@@ -226,6 +207,20 @@ CREATE TABLE `reservations` (
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `reservations`
+--
+
+INSERT INTO `reservations` (`reservation_id`, `reservation_date`, `house_id`, `user_id`) VALUES
+(708, '2025-02-04', 3, 1011),
+(709, '2025-02-28', 3, 1011),
+(710, '2025-02-17', 2, 1011),
+(711, '2025-02-18', 2, 1011),
+(712, '2025-02-17', 4, 1011),
+(713, '2025-02-18', 4, 1011),
+(714, '2025-03-24', 6, 1020),
+(715, '2025-03-25', 6, 1020);
+
 -- --------------------------------------------------------
 
 --
@@ -238,18 +233,27 @@ CREATE TABLE `users` (
   `user_lastName` varchar(25) DEFAULT NULL,
   `user_email` varchar(30) DEFAULT NULL,
   `user_phone` varchar(30) DEFAULT NULL,
-  `user_password` varchar(150) DEFAULT NULL
+  `user_password` varchar(150) DEFAULT NULL,
+  `urole` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `user_name`, `user_lastName`, `user_email`, `user_phone`, `user_password`, `urole`) VALUES
+(1011, 'amjad', 'rifaii', 'amjadrifaii@gmail.com', '123456', '123456', 'admin'),
+(1014, 'elio', 'abdo', 'elioabdo@gmail.com', '123456', '123456', 'admin'),
+(1019, 'elia', 'abel masih', 'eliaabelmasih@gmail.com', '123456', '123456', 'admin'),
+(1020, 'test', 'subject', 'testsubject@test.com', '1', '123', 'user'),
+(1021, 'potato', 'chips', 'potatochips@gmail.com', '12', '123456', 'user'),
+(1022, 'tomato', 'zomato', 'tomatozomato@gmail.com', '123', '123456', 'user'),
+(1023, 'php', 'isfun', 'phpisfun@gmail.com', '123', '123456', 'user'),
+(1024, 'LUCS', 'ZAHLE', 'LUCSZAHLE@gmail.com', '123', '123456', 'user');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `admins`
---
-ALTER TABLE `admins`
-  ADD PRIMARY KEY (`admin_id`);
 
 --
 -- Indexes for table `guest_houses`
@@ -296,16 +300,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `admins`
---
-ALTER TABLE `admins`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
 -- AUTO_INCREMENT for table `guest_houses`
 --
 ALTER TABLE `guest_houses`
-  MODIFY `guest_house_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `guest_house_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `house_types`
@@ -317,7 +315,7 @@ ALTER TABLE `house_types`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `locations`
@@ -329,13 +327,13 @@ ALTER TABLE `locations`
 -- AUTO_INCREMENT for table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=612;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=716;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1011;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1025;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

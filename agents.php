@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +35,7 @@
 <body class="agents-page">
 
 <?php
-  include("header.html");
+  include("header.php");
   ?>
 
   <main class="main">

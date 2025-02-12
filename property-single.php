@@ -23,7 +23,7 @@
   <meta name="description" content="">
   <meta name="keywords" content="">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="assets/js/retrieve-reservations"></script>
+  <script src="assets/js/retrieve-reservations.js"></script>
 
  
 
@@ -194,7 +194,7 @@
 
   
   include("insert_reservation.php");
-  include("header.html");
+  include("header.php");
   ?>
 
   <main class="main" id="main">
@@ -274,7 +274,7 @@
                 <p id="guest_house_about">
                 </p>
           </div>
-          <form method="POST">
+          <form id="reservation-form" method="POST">
  <h2><b>Reservation Calendar:</b></h2>
  
     <div id="calendar-container">

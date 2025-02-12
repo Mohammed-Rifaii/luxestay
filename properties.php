@@ -96,7 +96,7 @@ $user_id = $_SESSION['user_id'];
 <body class="properties-page">
 
 <?php
-  include("header.html");
+  include("header.php");
   ?>
   <main class="main">
 
