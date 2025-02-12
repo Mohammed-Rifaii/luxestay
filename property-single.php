@@ -281,7 +281,7 @@
         <section id="calendar-section" class="calendar section">
         <div id="hero-carousel" class="carousel slide">
           <div class="carousel-inner">
-                <div id="calendar1" class="carousel-item  active" ></div>
+                <div id="calendar1" class="carousel-item  active"></div>
                 <div id="calendar2" class="carousel-item"></div>
                 <div id="calendar3" class="carousel-item"></div>
                 <div id="calendar4" class="carousel-item"></div>
