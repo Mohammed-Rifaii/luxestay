@@ -3,7 +3,7 @@ function generateCalendar(year, month, cal) {
 
     cal.innerHTML = ""; // Clear previous calendar
     const firstDay = new Date(year, month, 1);  // First day of the current month
-    const lastDay = new Date(year, month + 1, 0); // Last day of the current month
+    const lastDay = new Date(year, month , 0); // Last day of the current month
 
 
     let strMonth;
@@ -40,7 +40,8 @@ function generateCalendar(year, month, cal) {
     let m = document.createElement("div");
     m.classList.add("monthdiv");
     m.innerHTML=monthElement;
-     m.style.marginBottom = "20px";
+     m.style.marginBottom = "7px";
+     m.style.width="75px";
     cal.appendChild(m);
 
 
